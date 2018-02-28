@@ -1,0 +1,26 @@
+Player,Team,Position,Height,Weight,Games Played,Minutes / Game,FGM / Game,FGA / Game,3M / Game,3A / Game,FTM / Game,FTA / Game,OR / Game,TR / Game,AS / Game,ST / Game,TO / Game,BK / Game,PF / Game,DQ / Game,PTS / Game,TC / Game,EJ / Game,FF / Game,Sta / Game,+/-
+Keith Appling,ORL,Point Guard,"6'0""",190,5,5,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,14
+Mario Chalmers,MEM,Point Guard,"6'2""",190,61,22,2,7,0,2,3,4,0,2,3,1,1,0,2,0,10,0,0,0,0,80
+Demarcus Cousins,SAC,Center,"6'11""",269,65,34,9,20,1,3,7,10,2,11,3,1,3,1,3,0,26,0,0,0,1,39
+Seth Curry,SAC,Shooting Guard,"6'2""",169,44,15,2,5,1,2,1,1,0,1,1,0,0,0,0,0,6,0,0,0,0,-43
+Stephen Curry,GSW,Point Guard,"6'3""",190,79,34,10,20,5,11,4,5,0,5,6,2,3,0,2,0,30,0,0,0,1,1001
+Demar Derozan,TOR,Shooting Guard,"6'7""",216,78,35,7,17,0,1,7,8,0,4,4,1,2,0,2,0,23,0,0,0,1,170
+Cristian Felicio,CHI,Power Forward,"6'9""",267,31,10,1,2,0,0,0,1,0,3,0,0,0,0,1,0,3,0,0,0,0,53
+Langsto Galloway,NYK,Point Guard,"6'2""",201,82,24,2,7,0,2,1,1,0,3,2,0,0,0,2,0,7,0,0,0,0,-103
+Andre Goudelock,HOU,Point Guard,"6'3""",201,8,6,1,2,0,1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,10
+Gerald Green,MIA,Shooting Guard,"6'8""",201,69,22,3,8,1,3,1,1,0,2,0,0,0,0,1,0,8,0,0,0,0,46
+Solomon Hill,IND,Small Forward,"6'7""",225,59,14,1,3,0,1,0,0,0,2,0,0,0,0,1,0,4,0,0,0,0,46
+Lebron James,CLE,Small Forward,"6'8""",249,76,35,9,18,1,3,4,6,1,7,6,1,3,0,1,0,25,0,0,0,1,618
+Courtney Lee,NOR,Shooting Guard,"6'5""",201,79,29,3,8,1,2,1,1,0,2,1,1,0,0,1,0,9,0,0,0,0,150
+Kyle Lowry,TOR,Point Guard,"6'0""",205,77,37,6,15,2,7,5,6,0,4,6,2,2,0,2,0,21,0,0,0,1,372
+Doug Mcdermott,CHI,Small Forward,"6'8""",225,81,22,3,7,1,3,0,1,0,2,0,0,0,0,1,0,9,0,0,0,0,-66
+Khris Middleton,MIL,Small Forward,"6'8""",234,79,36,6,14,1,4,3,3,0,3,4,1,2,0,2,0,18,0,0,0,1,-16
+Elijah Millsap,UTA,Shooting Guard,"6'6""",216,20,8,0,1,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,17
+Timofey Mozgov,CLE,Center,"7'1""",276,76,17,2,4,0,0,0,1,1,4,0,0,0,0,2,0,6,0,0,0,0,2
+Cameron Payne,OKL,Point Guard,"6'3""",185,57,12,2,4,0,1,0,0,0,1,1,0,0,0,1,0,4,0,0,0,0,-29
+Norman Powell,TOR,Shooting Guard,"6'4""",215,49,14,1,4,0,1,0,1,0,2,0,0,0,0,1,0,5,0,0,0,0,67
+Phil Pressey,PHO,Shooting Guard,"5'11""",174,22,12,1,3,0,0,0,1,0,1,3,0,1,0,1,0,3,0,0,0,0,-41
+Thomas Robinson,BRO,Power Forward,"6'10""",238,71,12,1,4,0,0,0,1,1,5,0,0,0,0,1,0,4,0,0,0,0,-274
+Kyle Singler,OKL,Small Forward,"6'8""",220,68,14,1,3,0,1,0,0,0,2,0,0,0,0,1,0,3,0,0,0,0,-22
+Garrett Temple,WAS,Shooting Guard,"6'6""",194,80,24,2,6,1,3,1,1,0,2,1,0,0,0,2,0,7,0,0,0,0,-37
+Marvin Williams,CHA,Power Forward,"6'9""",245,81,28,4,9,1,4,1,1,1,6,1,0,0,0,1,0,11,0,0,0,1,248

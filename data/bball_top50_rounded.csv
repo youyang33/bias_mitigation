@@ -1,0 +1,51 @@
+Player,Player Anonymized,Team,Position,Avg. 3-Pointers Att.,Avg. 3-Pointers Made,Avg. Assists,Avg. Blocks,Avg. Field Goals Att.,Avg. Field Goals Made,Avg. Free Throws Att.,Avg. Free Throws Made,Avg. Minutes,Avg. Personal Fouls,Avg. Points,Avg. Offensive Rebounds,Avg. Steals,Avg. Total Rebounds,Avg. Turnovers,Games Played,Height (Inches),Weight (Pounds),+/-
+James Harden,269,HOU,Shooting Guard,8,2,7,0,19,8,10,8,38,2,28,0,1,6,4,82,77,225,129
+Jimmy Butler,755,CHI,Shooting Guard,3,0,4,0,15,7,7,5,36,1,20,1,1,5,1,67,79,220,-9
+Ke Caldwell-pope,196,DET,Shooting Guard,4,1,1,0,12,5,3,2,36,2,14,0,1,3,1,76,77,205,174
+Gordon Hayward,809,UTA,Shooting Guard,5,1,3,0,15,6,5,4,36,2,19,0,1,4,2,80,80,209,87
+Demar Derozan,169,TOR,Shooting Guard,1,0,4,0,17,7,8,7,35,2,23,0,1,4,2,78,79,216,170
+C.J. Mccollum,361,POR,Shooting Guard,5,2,4,0,17,8,2,2,34,2,20,0,1,3,2,80,76,201,148
+Arron Afflalo,873,NYK,Shooting Guard,5,2,4,0,17,8,2,2,34,2,20,0,1,3,2,80,77,216,148
+Wesley Matthews,849,DAL,Shooting Guard,5,2,4,0,17,8,2,2,34,2,20,0,1,3,2,80,77,220,148
+Victor Oladipo,811,ORL,Shooting Guard,5,2,4,0,17,8,2,2,34,2,20,0,1,3,2,80,76,214,148
+Klay Thompson,712,GSW,Shooting Guard,5,2,4,0,17,8,2,2,34,2,20,0,1,3,2,80,79,205,148
+Kyle Lowry,143,TOR,Point Guard,7,2,6,0,15,6,6,5,37,2,21,0,2,4,2,77,72,205,372
+John Wall,385,WAS,Point Guard,4,1,10,0,17,7,4,3,36,2,19,0,1,4,4,77,76,209,100
+Brandon Knight,548,PHO,Point Guard,6,2,4,0,16,7,3,2,35,2,19,0,1,3,3,53,75,189,-208
+Damian Lillard,632,POR,Point Guard,8,3,6,0,19,8,6,5,35,2,25,0,0,4,3,75,75,194,78
+Rajon Rondo,466,SAC,Point Guard,2,0,11,0,10,4,2,1,35,2,11,1,1,6,3,72,73,185,-148
+Kemba Walker,744,CHA,Point Guard,6,2,5,0,16,7,5,4,35,1,20,0,1,4,2,81,73,184,238
+Eric Bledsoe,860,PHO,Point Guard,4,1,6,0,15,7,5,4,34,2,20,0,2,4,3,31,73,205,-49
+Stephen Curry,118,GSW,Point Guard,11,5,6,0,20,10,5,4,34,2,30,0,2,5,3,79,75,190,1001
+George Hill,458,IND,Point Guard,4,1,3,0,10,4,2,1,34,2,12,0,1,4,1,74,74,181,93
+Russel Westbrook,681,OKL,Point Guard,4,1,10,0,18,8,7,5,34,2,23,1,2,7,4,80,75,200,633
+Khris Middleton,653,MIL,Small Forward,4,1,4,0,14,6,3,3,36,2,18,0,1,3,2,79,80,234,-16
+Carmelo Anthony,968,NYK,Small Forward,4,1,4,0,18,7,5,4,35,2,21,1,0,7,2,72,80,236,-42
+Trevor Ariza,923,HOU,Small Forward,6,2,2,0,10,4,1,1,35,2,12,0,1,4,1,81,80,218,45
+Nicolas Batum,909,CHA,Small Forward,5,1,5,0,12,5,2,2,35,1,14,0,0,6,2,70,80,200,211
+Kevin Durant,335,OKL,Small Forward,6,2,5,1,19,9,6,6,35,1,28,0,0,8,3,72,81,240,644
+Lebron James,540,CLE,Small Forward,3,1,6,0,18,9,6,4,35,1,25,1,1,7,3,76,80,250,618
+Marcus Morris,217,DET,Small Forward,3,1,2,0,11,5,3,2,35,2,14,1,0,5,1,80,81,236,157
+Andrew Wiggins,832,MIN,Small Forward,2,0,2,0,15,7,6,5,35,2,20,1,0,3,2,81,80,200,-66
+Danilo Gallinari,618,DEN,Small Forward,4,1,2,0,13,5,8,7,34,1,19,0,0,5,1,53,82,225,-104
+Rudy Gay,108,SAC,Small Forward,3,1,1,0,14,6,3,2,34,2,17,1,1,6,1,70,80,229,-82
+Anthony Davis,424,NOR,Power Forward,1,0,1,2,18,9,7,5,35,2,24,2,1,10,1,61,82,254,-203
+Chris Bosh,885,MIA,Power Forward,4,1,2,0,14,6,5,4,33,1,19,0,0,7,1,53,83,235,22
+Blake Griffin,386,LAC,Power Forward,0,0,4,0,17,8,5,4,33,2,21,1,0,8,2,35,82,251,181
+Derrick Favors,789,UTA,Power Forward,0,0,1,1,13,6,4,2,32,2,16,2,1,8,1,62,82,247,86
+Serge Ibaka,553,OKL,Power Forward,2,0,0,1,11,5,1,1,32,2,12,1,0,6,1,78,82,236,529
+Paul Millsap,542,ATL,Power Forward,2,0,3,1,13,6,5,3,32,2,17,2,1,9,2,81,80,247,222
+Pau Gasol,173,CHI,Power Forward,0,0,4,2,13,6,4,3,31,2,16,2,0,11,2,72,84,254,-3
+Kevin Love,691,CLE,Power Forward,5,2,2,0,12,5,4,3,31,2,16,1,0,9,1,77,82,251,429
+Dirk Nowitzki,649,DAL,Power Forward,4,1,1,0,14,6,3,3,31,2,18,0,0,6,1,75,84,245,260
+Lamarcu Aldridge,848,SAN,Power Forward,0,0,1,1,14,7,4,3,30,2,17,2,0,8,1,74,83,240,510
+Demarcus Cousins,940,SAC,Center,3,1,3,1,20,9,10,7,34,3,26,2,1,11,3,65,83,269,39
+Marc Gasol,637,MEM,Center,0,0,3,1,13,6,4,3,34,2,16,1,0,6,2,52,85,265,9
+Deandre Jordan,517,LAC,Center,0,0,1,2,6,4,8,3,33,2,12,3,0,13,1,77,83,265,439
+Brook Lopez,284,BRO,Center,0,0,2,1,15,8,5,4,33,2,20,2,0,7,2,73,84,265,-116
+Andre Drummond,325,DET,Center,0,0,0,1,13,6,7,2,32,3,16,4,1,14,1,81,84,280,127
+Dwight Howard,275,HOU,Center,0,0,1,1,8,5,6,3,32,3,13,3,0,11,2,71,83,265,20
+Rudy Gobert,678,UTA,Center,0,0,1,2,5,3,4,2,31,2,9,3,0,10,1,61,85,245,149
+Karl-Anthony Towns,516,MIN,Center,1,0,1,1,14,7,3,2,31,2,18,2,0,10,2,82,84,247,-130
+Nikola Vucevic,253,ORL,Center,0,0,2,1,16,8,2,1,31,2,18,2,0,8,1,65,84,260,-45
+Marcin Gortat,347,WAS,Center,0,0,1,1,10,5,2,1,30,2,13,2,0,9,1,75,83,240,62

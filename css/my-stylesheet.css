@@ -1,0 +1,273 @@
+/* 
+	General Page Styles 
+*/
+body {
+  font: 12px sans-serif;
+  background-color: #e0e0e0;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+#BiasButton{
+  margin-top: 10px;
+  width: 125px;
+  height: 32px; 
+  border: none;
+  background-color: #1f77b4;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  text-decoration: none;}
+
+.studyNav {
+	width: 125px;
+	height: 32px; 
+	border: none;
+	background-color: #1f77b4;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+    text-decoration: none;
+}
+
+.studyBlue {
+	color: #1f77b4;
+}
+
+.studyOrange {
+	color: #ff7f0e;
+}
+
+.studyGreen {
+	color: #2ca02c;
+}
+
+.studyRed {
+	color: #d62728;
+}
+
+#scplot {
+  background-color: #e0e0e0;
+  width: 1030px;
+  height: 725px; 
+  display: block;
+  overflow: hidden;
+  /*height: 650px; */
+}
+
+#SC .axis { font-size: 1.5em; }
+
+#DROP rect {
+  fill: #f2f2f2; 
+  stroke: #888888;
+  stroke-width: 3;
+  stroke-opacity:0.6;
+}
+
+#DROP rect:hover {
+  fill: #ffffff;
+}
+
+.visited {
+  fill-opacity: 0.5;
+  stroke-opacity: 0.75;
+}
+
+.unvisited {
+	fill-opacity: 0.2;
+	stroke-opacity: 0.25;
+}
+
+.bar.bias {
+  fill: #a6a6a6;
+  stroke: #404040;
+  stroke-width: 1;
+}
+
+.bar.positive {
+  fill: steelblue;
+}
+
+.bar.negative {
+  fill: brown;
+}
+
+.bar.posChanged {
+  fill: steelblue;
+}
+
+.bar.negChanged {
+  fill: brown;
+}
+
+.dummy.dragBarTop {
+  fill: black;
+  opacity: 0.2;
+  cursor: ew-resize; 
+}
+
+.errorbar {
+  stroke: black;
+  stroke-width: 2;
+  opacity: 1;
+}
+
+td, th {
+  padding: 1px 4px;
+  word-wrap:break-word;
+}
+
+th {
+  white-space: nowrap;
+}
+
+table {
+  font: 10px sans-serif;
+  border-collapse:collapse; 
+  table-layout:fixed; 
+  width: 360px;
+}
+
+/*ul {
+  list-style-type: none;
+  margin: 0.5em 0em 0.5em 0em;
+  width: 100%; 
+}
+  
+ul li {
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0em;
+  padding: 0em 1em; 
+}*/
+    
+.category {
+  stroke: #000000;
+  fill-opacity: 0.5;
+  stroke-width: 1.2px;
+  stroke-opacity: 1.0;
+}
+
+.categoryClicked {
+	fill-opacity: 1.0;
+	stroke-width: 3px;
+}
+
+circle {
+  fill: #7f7f7f;
+  stroke: #7f7f7f;
+  fill-opacity: 0.2;
+  stroke-width: 1.2px;
+  stroke-opacity: 0.5;
+  cursor: move; 
+}
+  
+circle.dropped {
+  stroke: black; 
+  stroke-width: 4;
+  stroke-opacity: 1;
+  fill-opacity: 1;
+}
+    
+circle.highlighted {
+  stroke: black;
+  stroke-width: 2.5px; 
+  fill-opacity: 1;
+}
+    
+circle:hover {
+  stroke: black; 
+  stroke-width: 2.5px;
+  fill-opacity: 1;
+}
+    
+circle:click {
+  stroke: black; 
+  stroke-width: 2.5px;
+  fill-opacity: 1;
+}
+    
+.classified {
+	fill-opacity: 1.0;
+}
+
+.default {
+  fill: #7f7f7f;
+  stroke: #7f7f7f;
+  fill-opacity: 0.2;
+  stroke-width: 1.2px;
+  stroke-opacity: 0.5;
+}
+
+#pcplot {
+  background-color: #efefef;
+}
+
+#pcplot .axis {
+  font-size: 1.3em; 
+}
+
+.background path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  cursor: move;
+}
+
+.button {
+  width:400px;
+  height:40px;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

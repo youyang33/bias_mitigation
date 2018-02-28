@@ -1,0 +1,151 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>InterAxis</title>
+
+  <script src='lib/d3.v3.js'></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="https://d3js.org/d3-color.v1.min.js"></script>
+  <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://d3js.org/d3-scale.v1.min.js"></script>
+  <script src="lib/jquery-2.1.3.min.js"></script>
+  <script src="lib/jquery.qtip.min.js"></script>
+  <script src="lib/numeric-1.2.6.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/le.min.js"></script>
+  <script src="lib/ial.js"></script>
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+
+  <script src='js/scatter-plot.js'></script>
+  <script src='js/axis.js'></script>
+  <script src='js/para-coord.js'></script>
+  <script src='js/main_bball.js'></script>
+  <link rel="stylesheet" type="text/css" href="css/my-stylesheet.css">   
+  <link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css"> 
+</head>
+
+<body onload="init()"> <!-- init() method defined in main.js -->
+
+	<div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Bias Detected</h4>
+        </div>
+        <div class="modal-body">
+        			<div class="bias_type"></div>
+        	        <div class="ignore-data"></div>
+        	        <div class="ignored-data"></div>
+        			<div class="focus-data"></div>
+        			<div class="focused-data"></div>
+        </div>
+
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No More Alert</button>  
+        <button type="button" class="btn btn-default custom-modal" data-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+    </div>
+     <!-- Modal content-->
+  <div id="dialog" title="Basic dialog">
+    <h3>Select the initial X and Y dimensions for the scatterplot view in the user study.</h3>
+    <br><br>
+  	<h5>Select Initial X Dimension:
+	<select id="initX">
+		<option value="a3pa">Avg. 3-Pointers Att.</option>
+		<option value="a3pm">Avg. 3-Pointers Made</option>
+		<option value="aa">Avg. Assists</option>
+		<option value="ab">Avg. Blocks</option>
+		<option value="afga">Avg. Field Goals Att.</option>
+		<option value="afgm">Avg. Field Goals Made</option>
+		<option value="afta">Avg. Free Throws Att.</option>
+		<option value="aftm">Avg. Free Throws Made</option>
+		<option value="am">Avg. Minutes</option>
+		<option value="apf">Avg. Personal Fouls</option>
+		<option value="ap">Avg. Points</option>
+		<option value="aor">Avg. Offensive Rebounds</option>
+		<option value="as">Avg. Steals</option>
+		<option value="atr">Avg. Total Rebounds</option>
+		<option value="ato">Avg. Turnovers</option>
+		<option value="games" selected="selected">Games Played</option>
+		<option value="height">Height (Inches)</option>
+		<option value="weight">Weight (Pounds)</option>
+	</select>
+	<br><br>
+	Select Initial Y Dimension:
+	<select id="initY">
+		<option value="a3pa">Avg. 3-Pointers Att.</option>
+		<option value="a3pm">Avg. 3-Pointers Made</option>
+		<option value="aa">Avg. Assists</option>
+		<option value="ab">Avg. Blocks</option>
+		<option value="afga">Avg. Field Goals Att.</option>
+		<option value="afgm">Avg. Field Goals Made</option>
+		<option value="afta">Avg. Free Throws Att.</option>
+		<option value="aftm">Avg. Free Throws Made</option>
+		<option value="am" selected="selected">Avg. Minutes</option>
+		<option value="apf">Avg. Personal Fouls</option>
+		<option value="ap">Avg. Points</option>
+		<option value="aor">Avg. Offensive Rebounds</option>
+		<option value="as">Avg. Steals</option>
+		<option value="atr">Avg. Total Rebounds</option>
+		<option value="ato">Avg. Turnovers</option>
+		<option value="games">Games Played</option>
+		<option value="height">Height (Inches)</option>
+		<option value="weight">Weight (Pounds)</option>
+	</select>
+	</h5>
+	<br><br>
+	<h4>Click <span class="studyBlue">Continue</span> below to proceed.</h4>
+	<input name="doneButton" type="button" value="Continue" id="doneButton" class="studyNav"/>
+
+  </div>
+  <div class="row" id="area1" style="overflow:hidden;">
+    <div class="col-md-8" id="scplot">
+      <div id="btnXc" style="position: absolute">
+          <input name="updateButton" 
+                 type="button" 
+                 value="Clear Bins" 
+                 onclick="clearDropzone(&quot;X&quot;)" />
+      </div>
+      <div style="text-align: center; word-wrap: break-word;">
+      	  <img id="helpButton" src="img/help.png" style="width: 20px; height: 20px; float: left;"><h5 id="instructions" style="float: right;"><b>Using the data provided about the basketball players, color each circle in the scatterplot by which position you think they play.</b></h5></div>
+	      <select id="cbY" name="cbY" onchange="updatebycb(&quot;Y&quot;,value);" style="position: absolute; width: 100px"></select>
+	      <select id="cbX" onchange="updatebycb(&quot;X&quot;,value);" style="position: absolute; width: 175px"></select>
+    </div>
+    <div class="col-md-2" id="area3">
+      <div id="datapanel" class="table" width="150"></div>
+      <div id="datapanel2" class="table" width="150"></div>
+      <div id="datapanel3" class="table" width="150"></div>
+      <div id="datapanel4" class="table" width="150">
+      	<form>
+			<input type="checkbox" name="done" id="doneCheck"><span style="font-size:12px;">I am finished. <br>Click <span class="studyBlue">Continue</span> to proceed.</span>
+		</form>
+      	<button type="button" id="continueButton" class="studyNav">Continue</button>
+      	<button type="button" id="BiasButton" class="custom-modal">Detect Bias</button>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="area2">
+    <!-- <div id="pcplot" class="chart"></div> -->
+  </div>
+   <script language="javascript" type="text/javascript">
+
+  	console.log('user id: ', window.localStorage.getItem("userId"));
+  	
+  	if (window.localStorage.getItem("userId") == null || window.localStorage.getItem("whichCondition") == null) {
+		alert("Error: No user id found. To participate in the study, you must indicate consent first at va.gatech.edu/projects/bias_study/consent.html."); 
+		var w = window.open("consent.html", "_self");
+	} // TODO: Uncomment this for study deployment
+	
+    
+  var interval = null;
+    
+  </script>
+</body>
+
+</html>

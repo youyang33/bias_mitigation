@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>User Study Consent</title>
+<link rel="stylesheet" type="text/css" href="css/my-stylesheet.css"> 
+</head>
+
+<body bgcolor=FFFFFF text=000000 alink=0000FF link=0000FF vlink=0000FF>
+
+<center>
+<h1>CONSENT DOCUMENT FOR ENROLLING ADULT PARTICIPANTS IN A RESEARCH STUDY</h1>
+<h2>Georgia Institute of Technology</h2>
+<h2>Project Title: Heuristic Bias Metrics</h2>
+</center>
+
+<h3>Investigators: <i>Emily Wall, Alex Endert, and Leslie Blaha</i></h3>
+<h3>Protocol and Consent Title: <i>HeuristicBias 12/1/16 v1.0</i></h3>
+
+<p>You are being asked to be a volunteer in a research study.</p>
+
+<p>
+<b><u>Purpose:</b></u> The purpose of this study is to evaluate statistical heuristics for detecting bias based on user interactions.
+</p>
+
+<p>
+<b><u>Exclusion/Inclusion Criteria:</b></u> Participants in this study must be at least 18 years of age and have general familiarity with using web-based systems.
+</p> 
+
+<p>
+<b><u>Procedures:</b></u> If you decide to be in this study, your part will involve approximately one hour, during which you will complete a simple knowledge background questionnaire, watch a demonstration of the evaluation interface, and perform a set of tasks with an interactive visualization. With your permission we will record your interactions using logging software that will capture things like clicks and hovers.
+</p>
+
+<p>
+<b><u>Risks or Discomforts:</b></u> The risks involved are no greater than those involved in daily activities such as using a laptop for web-browsing.
+</p>
+
+<p>
+<b><u>Benefits:</b></u> You are not likely to benefit in any way from joining this study. We hope that what we learn will help to enhance our understanding of user interaction patterns related to bias.
+</p>
+
+<p>
+<b><u>Compensation to You:</b></u> You will receive a $10 gift card for your time. U.S. Tax Law requires a mandatory withholding of 30% for nonresident alien payments of any type. Your address and citizenship / visa status may be collected for compensation purposes only. This information will be shared only with the Georgia Tech department that issues compensation.
+</p>
+
+<p>
+<b><u>Confidentiality:</b></u> Your privacy will be protected to the extent allowed by the law. To protect your privacy, your records will be kept under a code number rather than by name. Interaction logs will be stored on an external storage device. Your records, including interaction logs, questionnaire responses, and consent form will be kept in locked files and only study staff will be allowed to look at them. Your name and any other fact that might point to you will not appear when results of this study are presented or published. Federal regulations require that all study data be stored for a minimum of 3 years. After analysis and publication, all records of your participation in the study will be destroyed. To make sure that this research is being carried out properly, the Georgia Institute of Technology IRB may review study records. Your privacy will be protected to the extent allowed by the law. The Office of Human Research Protections may also look over study records during required reviews.
+</p>
+
+<p>
+<b><u>Costs to You:</b></u> If you participate in this study, you will be responsible for any data costs incurred while participating in the online study. 
+</p>
+
+<p>
+<b><u>Participant Rights:</b></u> Your participation in this study is voluntary. You do not have to be in this study if you don't want to be. You have the right to change your mind and leave the study at any time without giving any reason and without penalty. If you decide not to finish the study, you have the right to withdraw any data collected about you. Should you decide to withdraw from the study, your questionnaires will be shredded. Any new information that may make you change your mind about being in this study will be given to you. You will be given a copy of this consent form to keep. You do not waive any of your legal rights by signing this consent form.
+</p>
+
+<p>
+<b><u>Questions about the Study:</b></u> If you have any questions about the study, you may contact Dr. Alex Endert at (404) 385-4477 or endert@gatech.edu.
+</p>
+
+<p>
+<b><u>Questions about Your Rights as a Research Participant:</b></u> If you have any questions about your rights as a research participant, you may contact Ms. Melanie Clark, Office of Research Integrity and Assurance, at (404) 894-6942.
+</p>
+
+<p>By selecting <b>Accept</b>, you indicate that you have read the information in this consent form and consent to be in the study.</p>
+
+<form>
+	<input type="checkbox" name="accept" id="acceptCheck">I accept
+</form>
+
+<button type="button" id="continueButton" class="studyNav">Continue</button>
+
+<script type="text/javascript">
+	// generate a unique user id
+    var userId = Math.floor(Math.random() * 26) + Date.now();
+    console.log('user id: ', userId);
+	
+	// determine study condition randomly
+	var whichCondition = Math.random() >= 0.5;
+	if (whichCondition) whichCondition = 1; 
+	else whichCondition = 2;
+	
+	// EMILY: REMOVE FOR ACTUAL STUDY: 
+	// whichCondition = 2;
+	
+	// set local storage of user id and condition in browser
+	window.localStorage.setItem("userId", userId);
+	window.localStorage.setItem("whichCondition", whichCondition);
+	
+	document.getElementById("continueButton").onclick = function () {
+		if (document.getElementById("acceptCheck").checked) {
+			var w = window.open("instructions.html", "_self");
+		} else alert("You must read and accept the consent form in order to participate in the user study.");
+	};
+</script>
+
+</body>
+</html>
