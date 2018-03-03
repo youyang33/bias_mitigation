@@ -1,5 +1,6 @@
 axis = function(elemid, vector, XorY, options) {
-	var margin = {top: 30, right: 40, bottom: 10, left: 5},
+  //changed top margin of axis from 30 to 50
+	var margin = {top: 45, right: 40, bottom: 10, left: 5},
 		padding = options.padding,
 		width = options.width-margin.left-margin.right, height = options.height-margin.top-margin.bottom;
 	
