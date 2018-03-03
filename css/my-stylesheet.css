@@ -271,3 +271,7 @@ circle:click {
   top: 100%;
   left: 0;
 }
+
+#datapanel{
+  padding-top: 40px;
+}
