@@ -115,8 +115,9 @@ svg {
 }
 
 td, th {
-  padding: 1px 4px;
+  padding: 12px 4px;
   word-wrap:break-word;
+
 }
 
 th {
@@ -274,8 +275,8 @@ circle:click {
 
 #datapanel{
   padding-top: 40px;
+  height: 500px;
 }
-
 
 .axis path,
 .axis line{
@@ -296,5 +297,4 @@ circle:click {
 .linePath {
   fill: none;
   stroke: black;
-  stroke-width: 1px;
-}
+  stroke-width: 1px;}

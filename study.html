@@ -102,7 +102,15 @@
       <div id="datapanel" class="table" width="150"></div>
       </div>
 
-    <div class="col-md-2" id="bias"></div>
+    <div class="col-md-2" id="bias">
+      <table border="0">
+      <tr>
+      <td id="bias1"></td>
+      <td id="bias2"></td>
+      <td></td>
+</tr>
+</table>
+    </div>
   
   </div>
   <div class="row" id="area2">
@@ -113,8 +121,10 @@
 
   <script>
     var width=100;
-    var height=80;
-    var svg= d3.select('#bias')
+    var height=100;
+
+
+    var svg= d3.select('#bias1')
           .append("svg")
           .attr("width",width)        
           .attr("height",height)
