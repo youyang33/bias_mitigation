@@ -218,64 +218,6 @@ function addHelp() {
 		});
 }
 
-function addClassificationControls(data) {
-	var svgClassContainer = d3.select("#datapanel2")
-		.append("svg")
-		.attr("width", 150)
-		.attr("height", 160);
-	var categoryGroups = svgClassContainer.selectAll("circle")
-		.data(positions)
-		.enter().append("g")
-		.attr("transform", function(d, i) { return "translate(30, " + (24*(i+1)) + ")"; })
-		.on("click", function(d) {
-			activePosition = d;
-			d3.selectAll(".category").classed("categoryClicked", false);
-			d3.select(this).select("circle").classed("categoryClicked", true);
-			$("#datapanel3").html("<h5 style=\"color:" + colorMap[d] + "; stroke: 1px black;\">" + d + ":</h5> <h6>" + positionDescriptions[d] + "</h6>");
-			ial.logging.log('category_' + activePosition, undefined, 'CategoryClick', {'level': 'INFO', 'eventType': 'category_click', 'userId': window.localStorage.getItem("userId"), 'whichCondition': window.localStorage.getItem("whichCondition")});
-			LE.log(JSON.stringify(ial.logging.peek()));
-		}).on("dblclick", function() {
-			activePosition = "none";
-			d3.selectAll(".category").classed("categoryClicked", false);
-			$("#datapanel3").html("");
-			ial.logging.log('category_' + activePosition, undefined, 'CategoryDoubleClick', {'level': 'INFO', 'eventType': 'category_double_click', 'userId': window.localStorage.getItem("userId"), 'whichCondition': window.localStorage.getItem("whichCondition")});
-			LE.log(JSON.stringify(ial.logging.peek()));
-		});
-	var categoryCircles = categoryGroups.append("circle")
-		.attr("cx", 0)
-		.attr("cy", function(d, i) { return 0; })
-		.attr("r", 10)
-		.classed("category", true)
-		.style("fill", function(d) { return colorMap[d]; });
-	var categoryText = categoryGroups.append("text")
-		.attr("dx", function(d) { return 20; })
-		.text(function(d) { return d; })
-		.attr("dominant-baseline", "middle");
-
-	// listen for user to hit Continue
-	$("#continueButton").click(function() {
-		if (document.getElementById('doneCheck').checked) {
-			var allClassified = true;
-			var howMany = 0;
-			for (var i = 0; i < data.length; i++) {
-				if (data[i]["coord"]["userlabel"] == label.DEFAULT) {
-					allClassified = false; 
-					howMany++;
-				}
-			}
-			if (!allClassified) {
-				var userResp = confirm(howMany + " out of " + data.length + " points have not been classified yet. Are you sure you want to continue?");
-				if (userResp) { // user wants to continue anyway
-					var w = window.open("postsurvey.html", "_self");
-				}
-			} else {
-				var w = window.open("postsurvey.html", "_self");
-				window.localStorage.setItem("userId", window.localStorage.getItem("userId"));
-				window.localStorage.setItem("whichCondition", window.localStorage.getItem("whichCondition"));
-			}
-		} else alert("Check the box to certify you are finished with the task.");
-	});
-}
 
 function drawScatterPlot(data) {
 

@@ -275,3 +275,26 @@ circle:click {
 #datapanel{
   padding-top: 40px;
 }
+
+
+.axis path,
+.axis line{
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+ 
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.rect {
+  fill: steelblue;
+}
+
+.linePath {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+}

@@ -16,6 +16,8 @@
   <script src="lib/le.min.js"></script>
   <script src="lib/ial.js"></script>
   <link rel="stylesheet" href="lib/bootstrap.min.css">
+  
+  <script src='js/persistent.js'></script>
 
   <script src='js/scatter-plot.js'></script>
   <script src='js/axis.js'></script>
@@ -23,6 +25,8 @@
   <script src='js/main_bball.js'></script>
   <link rel="stylesheet" type="text/css" href="css/my-stylesheet.css">   
   <link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css"> 
+
+
 </head>
 
 <body onload="init()"> <!-- init() method defined in main.js -->
@@ -77,7 +81,9 @@
 	<h4>Click <span class="studyBlue">Continue</span> below to proceed.</h4>
 	<input name="doneButton" type="button" value="Continue" id="doneButton" class="studyNav"/>
   </div>
+
   <div class="row" id="area1" style="overflow:hidden;">
+
     <div class="col-md-8" id="scplot">
       <div id="btnXc" style="position: absolute">
           <input name="updateButton" 
@@ -91,17 +97,98 @@
 	      <select id="cbY" name="cbY" onchange="updatebycb(&quot;Y&quot;,value);" style="position: absolute; width: 100px"></select>
 	      <select id="cbX" onchange="updatebycb(&quot;X&quot;,value);" style="position: absolute; width: 175px"></select>
     </div>
+
     <div class="col-md-2" id="area3">
       <div id="datapanel" class="table" width="150"></div>
       </div>
-    </div>
+
+    <div class="col-md-2" id="bias"></div>
+  
   </div>
   <div class="row" id="area2">
     <!-- <div id="pcplot" class="chart"></div> -->
   </div>
-  <script language="javascript" type="text/javascript">
 
-    
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  <script>
+    var width=100;
+    var height=80;
+    var svg= d3.select('#bias')
+          .append("svg")
+          .attr("width",width)        
+          .attr("height",height)
+          .attr("padding",5)
+
+
+    var rand = d3.random.normal (50,50)
+
+    var dataset=[]
+
+    for(var i=0; i<100;i++) {
+      dataset.push(rand());
+    }
+
+    console.log(dataset);
+
+    var binNum=10,
+      rangeMin=0,
+      rangeMax=100;
+
+    var histogram=d3.layout.histogram()
+            .range([rangeMin,rangeMax])
+            .bins(binNum)
+            .frequency(true);
+
+    var hisData=histogram(dataset);
+
+    console.log(hisData);
+
+    var xAxisWidth=100;
+      xTicks=hisData.map(function(d){return d.x});
+
+    var xScale=d3.scale.ordinal()
+              .domain(xTicks)
+              .rangeRoundBands([0,xAxisWidth],0.1);
+    var yAxisWidth=30;
+
+    var yScale= d3.scale.linear()
+          .domain([ d3.min(hisData, function(d){ return d.y; }),
+                d3.max(hisData, function(d){ return d.y; }) ])
+            .range([5,yAxisWidth]);
+
+    var padding = { top: 30 , right: 30, bottom: 30, left: 30 };
+
+    var xAxis = d3.svg.axis()
+            .scale(xScale)
+            .orient("bottom")
+            .tickFormat(d3.format(".0f"));
+
+    svg.append("g")
+      .attr("class","axis")
+      .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
+      .call(xAxis);
+
+
+  console.log(xScale.range());
+  console.log(xScale.rangeBand());
+  console.log(xScale(70));
+  console.log(xScale(94));
+  
+    var lineGenerator = d3.svg.line()
+              .x(function(d){ return xScale(d.x); })
+              .y(function(d){ return height - yScale(d.y); })
+              .interpolate("basis");
+  
+    var gLine = svg.append("g")
+          .attr("transform","translate(" + padding.left + "," + ( -padding.bottom ) +  ")")
+          .style("opacity",1.0);
+  
+    gLine.append("path")
+    .attr("class","linePath")
+    .attr("d",lineGenerator(hisData));
+      
   </script>
+  
 </body>
 </html>
