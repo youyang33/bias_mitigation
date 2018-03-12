@@ -84,7 +84,7 @@
 
   <div class="row" id="area1" style="overflow:hidden;">
 
-    <div class="col-md-8" id="scplot">
+    <div class="col-md-6" id="scplot">
       <div id="btnXc" style="position: absolute">
           <input name="updateButton" 
                  type="button" 
@@ -102,44 +102,51 @@
       <div id="datapanel" class="table" width="150"></div>
       </div>
 
-    <div class="col-md-2" id="bias">
+    <div class="col-md-1" id="bias">
       <table border="0">
       <tr>
-      <td id="bias1"></td>
-      <td id="bias2"></td>
+      <td id="bias1">
+      </td>
       <td></td>
-</tr>
-</table>
+      </tr>
+      <tr>
+      </tr>
+      </table>
+    </div>
+
+    <div class="col-md-1" id="CHECK">
+      <table border="0">
+      <tr><td><button id="vistype1" onclick="mitigation()">Vistype1</button></td></tr>
+      <tr><td><button id="vistype1" onclick="mitigationtest()">Vistype1</button></td></tr>
+      <tr><td><button id="vistype2" onclick="mitigationv()">Vistype2</button></td></tr>
+      <tr><td><button id="vistype2" onclick="mitigationvtest()">Vistype2</button></td></tr>
+    </table>
     </div>
   
   </div>
+
   <div class="row" id="area2">
     <!-- <div id="pcplot" class="chart"></div> -->
   </div>
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
-
   <script>
-    var width=100;
-    var height=100;
-
+    for (v=0; v<19; v++) {
+    var width=90;
+    var height=36;
 
     var svg= d3.select('#bias1')
           .append("svg")
           .attr("width",width)        
           .attr("height",height)
-          .attr("padding",5)
-
-
+   
     var rand = d3.random.normal (50,50)
 
     var dataset=[]
 
-    for(var i=0; i<100;i++) {
+    for(var i=0; i<50;i++) {
       dataset.push(rand());
     }
-
-    console.log(dataset);
 
     var binNum=10,
       rangeMin=0,
@@ -152,39 +159,28 @@
 
     var hisData=histogram(dataset);
 
-    console.log(hisData);
 
-    var xAxisWidth=100;
+    var xAxisWidth=50;
       xTicks=hisData.map(function(d){return d.x});
 
     var xScale=d3.scale.ordinal()
               .domain(xTicks)
               .rangeRoundBands([0,xAxisWidth],0.1);
-    var yAxisWidth=30;
+    var yAxisWidth=20;
 
     var yScale= d3.scale.linear()
           .domain([ d3.min(hisData, function(d){ return d.y; }),
                 d3.max(hisData, function(d){ return d.y; }) ])
             .range([5,yAxisWidth]);
 
-    var padding = { top: 30 , right: 30, bottom: 30, left: 30 };
+    var padding = { top: 10 , right: 10, bottom: 10, left: 10 };
 
     var xAxis = d3.svg.axis()
             .scale(xScale)
             .orient("bottom")
             .tickFormat(d3.format(".0f"));
 
-    svg.append("g")
-      .attr("class","axis")
-      .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
-      .call(xAxis);
 
-
-  console.log(xScale.range());
-  console.log(xScale.rangeBand());
-  console.log(xScale(70));
-  console.log(xScale(94));
-  
     var lineGenerator = d3.svg.line()
               .x(function(d){ return xScale(d.x); })
               .y(function(d){ return height - yScale(d.y); })
@@ -197,7 +193,13 @@
     gLine.append("path")
     .attr("class","linePath")
     .attr("d",lineGenerator(hisData));
-      
+    }
+
+    svg.append("g")
+      .attr("class","axis")
+      .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
+      .call(xAxis);
+
   </script>
   
 </body>

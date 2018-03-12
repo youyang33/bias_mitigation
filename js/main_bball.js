@@ -81,6 +81,16 @@ function loadData() {
 			}
 		}
 
+		//biased data
+		$(function biasdata(){
+			$('.custom-modal').click(
+      			function(){
+				ignoreddata=[];
+      				for (var m=0; m<5; m++){
+			 		var q = parseInt(Math.random() * loaddata.length);
+			 		ignoreddata.push(loaddata[q])}
+			 	console.log(ignoreddata[2].Name)
+			 	})})
 
 		// determine which condition the user follows and which set of descriptions should be used
 		if (window.localStorage.getItem("whichCondition") == 1) positionDescriptions = positionDescriptions1; 
@@ -201,5 +211,4 @@ function drawScatterPlot(data) {
 	});
 
 //alert
-
 }

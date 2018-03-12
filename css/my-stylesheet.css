@@ -298,3 +298,13 @@ circle:click {
   fill: none;
   stroke: black;
   stroke-width: 1px;}
+
+
+#bias1{
+  padding-top: 80px;
+}
+
+#CHECK{
+  padding-top: 80px;
+  height:20px;
+}

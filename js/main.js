@@ -76,6 +76,7 @@ d3.csv('data/infovisvast.csv', function(data) {
       delete item["raw"]["y coord"];
       delete item["raw"]["Cluster Membership"];
       loaddata[i] = item;
+      console.log(loaddata[30])
     }
     attr = Object.keys(loaddata[0]["raw"]);
     attrNo = attr.length;
@@ -90,7 +91,9 @@ d3.csv('data/infovisvast.csv', function(data) {
     });
     loadVis(loaddata);
   });
+
 }
+
 
 // Main function
 function loadVis(data) {

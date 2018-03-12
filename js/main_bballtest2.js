@@ -112,7 +112,7 @@ function loadData() {
 			 		$('#myModal').find('.focus-data').remove()}
 
       				else {
-		 			      				 $('#myModal').find('.focus-data').html('')
+		 			    $('#myModal').find('.focus-data').html('')
 		      			$('#myModal').find('.ignore-data').html('')
 		      			$('#myModal').find('.ignore-attribute-distribution').html('')
 		      			$('#myModal').find('.focus-attribute-distribution').html('')
@@ -136,7 +136,7 @@ function loadData() {
 
       			} else {
       					if (u==2){
-      						      				 $('#myModal').find('.focus-data').html('')
+      					$('#myModal').find('.focus-data').html('')
 		      			$('#myModal').find('.ignore-data').html('')
 		      			$('#myModal').find('.ignore-attribute-distribution').html('')
 		      			$('#myModal').find('.focus-attribute-distribution').html('')
@@ -170,7 +170,7 @@ function loadData() {
       					} else 
       					{
 						if(u==4){
-							      				 $('#myModal').find('.focus-data').html('')
+						$('#myModal').find('.focus-data').html('')
 		      			$('#myModal').find('.ignore-data').html('')
 		      			$('#myModal').find('.ignore-attribute-distribution').html('')
 		      			$('#myModal').find('.focus-attribute-distribution').html('')
@@ -200,7 +200,8 @@ function loadData() {
 
 						var d= parseInt(Math.random() * quatile.length);
 						$('#myModal').find('.focus-attribute-weight').text(" You are fosuing too much on "+quatile[d]+" part of the WEIGHT of the attribute "+ attr[w])}
-				}			
+				}	
+						
       						
 			 	}
 			 })})
@@ -234,7 +235,6 @@ function loadVis(data) {
 	drawParaCoords(data,dims);
 	tabulate(data[0], 'empty');
 	addHelp();
-	addClassificationControls(data);
 	addCustomAxisDropDownControls();
 }
 

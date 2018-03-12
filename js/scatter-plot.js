@@ -136,6 +136,7 @@ SimpleGraph = function(elemid, data, options) {
       .append("option")
       .attr("value", function(d) {return d;})
       .text(function(d) {return d;});
+
     d3.select("#cbX")
       .selectAll("option")
       .data(attr)
@@ -143,6 +144,7 @@ SimpleGraph = function(elemid, data, options) {
       .append("option")
       .attr("value", function(d) {return d;})
       .text(function(d) {return d;});
+
     div = document.getElementById("cbY");
     div.style.left = this.padding.left-dropSize-100/2;
     div.style.top = this.padding.top+this.size.height/2;
@@ -150,11 +152,13 @@ SimpleGraph = function(elemid, data, options) {
     div.style.left = this.size.width/2+dropSize;
     div.style.top = this.padding.top+this.size.height+60;
   }
+
   else {
     var SC = d3.select(this.chart).select("svg")
       .attr("width",  this.cx)
       .attr("height", this.cy);
   }
+
   this.vis = SC.append("g")
         .attr("id", "SC")
         .attr("transform", "translate(" + this.padding.left + "," + this.padding.top + ")");
@@ -258,6 +262,7 @@ SimpleGraph.prototype.update = function() {
         }
         
         tabulate(d, 'empty');
+
       }).on("click", function(d){
     	  if (activePosition != "none") {
     		  d["coord"]["userlabel"] = activePosition;
@@ -1015,6 +1020,8 @@ addNewAxis = function(newxname, newaxisvector) {
   d3.select("#cbY").append("option").attr("value",newxname).text(newxname);
   d3.select("#cbX").append("option").attr("value",newxname).text(newxname);
 }
+
+// Updated bias mitigation
 
 // recomputeAttrWeightMetrics: if true, recompute attribute weight metrics
 // otherwise, don't update them

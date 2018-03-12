@@ -74,4 +74,47 @@ var gLine = svg.append("g")
 gLine.append("path")
 .attr("class","linePath")
 .attr("d",lineGenerator(hisData));
+
+  
+function mitigation(){
+
+        d3.selectAll("circle")
+        .attr("r", function(b) {
+          return  Math.floor(Math.random() * 10) + 1 
+        });
+}
+
+function mitigationtest(){
+
+        d3.selectAll("circle")
+        .attr("r", function(b) {
+          biasTemp = Math.random();
+          if (biasTemp < 0.05)
+          	return  Math.floor(Math.random() * 13) + 1;
+          else
+          	return 7;
+        });
+}
+
+function mitigationv(){
+        d3.selectAll("circle")
+        .style("fill", function(d) {
+        	biasTemp = Math.random();
+          	if (biasTemp < 0.05)
+        		return "green";
+    	})//.style("fill-opacity",function(d){Math.random()*1})
+        .attr("r",function(b){
+          return Math.floor(Math.random()*13)
+        });
+      }
+
+
+function mitigationvtest(){
+        d3.selectAll("circle")
+        .style("fill", "red")
+        .style("fill-opacity",function(d){Math.random()*1})
+         .attr("r",function(b){
+          return Math.floor(Math.random()*13)
+        });
+      }
 	
