@@ -31,13 +31,13 @@ var hisData=histogram(dataset);
 
 console.log(hisData);
 
-var xAxisWidth=100;
+var xAxisWidth=50;
 	xTicks=hisData.map(function(d){return d.x});
 
 var xScale=d3.scale.ordinal()
 					.domain(xTicks)
 					.rangeRoundBands([0,xAxisWidth],0.1);
-var yAxisWidth=100;
+var yAxisWidth=50;
 
 var yScale= d3.scale.linear()
 			.domain([ d3.min(hisData, function(d){ return d.y; }),
@@ -111,7 +111,10 @@ function mitigationv(){
 
 function mitigationvtest(){
         d3.selectAll("circle")
-        .style("fill", "red")
+        .style("fill", function(d) {
+          biasTemp = Math.random();
+            if (biasTemp < 0.05)
+            return "red";})
         .style("fill-opacity",function(d){Math.random()*1})
          .attr("r",function(b){
           return Math.floor(Math.random()*13)

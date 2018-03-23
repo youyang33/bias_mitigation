@@ -29,7 +29,7 @@ svg {
 	font-size: 16px;
 	color: white;
 	text-align: center;
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .studyBlue {
@@ -115,7 +115,7 @@ svg {
 }
 
 td, th {
-  padding: 12px 4px;
+  padding: 10px 1.3px;
   word-wrap:break-word;
 
 }
@@ -128,7 +128,7 @@ table {
   font: 10px sans-serif;
   border-collapse:collapse; 
   table-layout:fixed; 
-  width: 360px;
+  width: 300px;
 }
 
 /*ul {
@@ -275,7 +275,7 @@ circle:click {
 
 #datapanel{
   padding-top: 40px;
-  height: 500px;
+  height: 300px;
 }
 
 .axis path,
@@ -301,10 +301,25 @@ circle:click {
 
 
 #bias1{
-  padding-top: 80px;
+  padding-top: 33px;
 }
+
+#bias2{
+  padding-top: 5px;
+}
+
 
 #CHECK{
   padding-top: 80px;
   height:20px;
 }
+
+#bias{
+    width:330px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+#dialog{
+width:330px;
+}
+
+

@@ -33,57 +33,55 @@
   <div id="dialog" title="Basic dialog">
     <h3>Select the initial X and Y dimensions for the scatterplot view in the user study.</h3>
     <br><br>
-  	<h5>Select Initial X Dimension:
-	<select id="initX">
-		<option value="a3pa">Avg. 3-Pointers Att.</option>
-		<option value="a3pm">Avg. 3-Pointers Made</option>
-		<option value="aa">Avg. Assists</option>
-		<option value="ab">Avg. Blocks</option>
-		<option value="afga">Avg. Field Goals Att.</option>
-		<option value="afgm">Avg. Field Goals Made</option>
-		<option value="afta">Avg. Free Throws Att.</option>
-		<option value="aftm">Avg. Free Throws Made</option>
-		<option value="am">Avg. Minutes</option>
-		<option value="apf">Avg. Personal Fouls</option>
-		<option value="ap">Avg. Points</option>
-		<option value="aor">Avg. Offensive Rebounds</option>
-		<option value="as">Avg. Steals</option>
-		<option value="atr">Avg. Total Rebounds</option>
-		<option value="ato">Avg. Turnovers</option>
-		<option value="games" selected="selected">Games Played</option>
-		<option value="height">Height (Inches)</option>
-		<option value="weight">Weight (Pounds)</option>
-	</select>
-	<br><br>
-	Select Initial Y Dimension:
-	<select id="initY">
-		<option value="a3pa">Avg. 3-Pointers Att.</option>
-		<option value="a3pm">Avg. 3-Pointers Made</option>
-		<option value="aa">Avg. Assists</option>
-		<option value="ab">Avg. Blocks</option>
-		<option value="afga">Avg. Field Goals Att.</option>
-		<option value="afgm">Avg. Field Goals Made</option>
-		<option value="afta">Avg. Free Throws Att.</option>
-		<option value="aftm">Avg. Free Throws Made</option>
-		<option value="am" selected="selected">Avg. Minutes</option>
-		<option value="apf">Avg. Personal Fouls</option>
-		<option value="ap">Avg. Points</option>
-		<option value="aor">Avg. Offensive Rebounds</option>
-		<option value="as">Avg. Steals</option>
-		<option value="atr">Avg. Total Rebounds</option>
-		<option value="ato">Avg. Turnovers</option>
-		<option value="games">Games Played</option>
-		<option value="height">Height (Inches)</option>
-		<option value="weight">Weight (Pounds)</option>
-	</select>
-	</h5>
+    <select id="initX">
+    <option value="a3pa">Avg. 3-Pointers Att.</option>
+    <option value="a3pm">Avg. 3-Pointers Made</option>
+    <option value="aa">Avg. Assists</option>
+    <option value="ab">Avg. Blocks</option>
+    <option value="afga">Avg. Field Goals Att.</option>
+    <option value="afgm">Avg. Field Goals Made</option>
+    <option value="afta">Avg. Free Throws Att.</option>
+    <option value="aftm">Avg. Free Throws Made</option>
+    <option value="am">Avg. Minutes</option>
+    <option value="apf">Avg. Personal Fouls</option>
+    <option value="ap">Avg. Points</option>
+    <option value="aor">Avg. Offensive Rebounds</option>
+    <option value="as">Avg. Steals</option>
+    <option value="atr">Avg. Total Rebounds</option>
+    <option value="ato">Avg. Turnovers</option>
+    <option value="games" selected="selected">Games Played</option>
+    <option value="height">Height (Inches)</option>
+    <option value="weight">Weight (Pounds)</option>
+  </select>
+  <br><br>
+  Select Initial Y Dimension:
+  <select id="initY">
+    <option value="a3pa">Avg. 3-Pointers Att.</option>
+    <option value="a3pm">Avg. 3-Pointers Made</option>
+    <option value="aa">Avg. Assists</option>
+    <option value="ab">Avg. Blocks</option>
+    <option value="afga">Avg. Field Goals Att.</option>
+    <option value="afgm">Avg. Field Goals Made</option>
+    <option value="afta">Avg. Free Throws Att.</option>
+    <option value="aftm">Avg. Free Throws Made</option>
+    <option value="am" selected="selected">Avg. Minutes</option>
+    <option value="apf">Avg. Personal Fouls</option>
+    <option value="ap">Avg. Points</option>
+    <option value="aor">Avg. Offensive Rebounds</option>
+    <option value="as">Avg. Steals</option>
+    <option value="atr">Avg. Total Rebounds</option>
+    <option value="ato">Avg. Turnovers</option>
+    <option value="games">Games Played</option>
+    <option value="height">Height (Inches)</option>
+    <option value="weight">Weight (Pounds)</option>
+  </select>
 	<br><br>
 	<h4>Click <span class="studyBlue">Continue</span> below to proceed.</h4>
 	<input name="doneButton" type="button" value="Continue" id="doneButton" class="studyNav"/>
   </div>
 
   <div class="row" id="area1" style="overflow:hidden;">
-
+  
     <div class="col-md-6" id="scplot">
       <div id="btnXc" style="position: absolute">
           <input name="updateButton" 
@@ -100,40 +98,36 @@
 
     <div class="col-md-2" id="area3">
       <div id="datapanel" class="table" width="150"></div>
+
+   
       </div>
 
-    <div class="col-md-1" id="bias">
+    <div class="col-md-2" id="bias">
+      <button id="toggle">Bias Hint</button>
       <table border="0">
-      <tr>
-      <td id="bias1">
-      </td>
-      <td></td>
-      </tr>
-      <tr>
-      </tr>
+        <tr>
+          <td id="bias1"><b>Attribute Distribution</b> </td>
+            <td id="bias2"><b>Attribute Coverage</b></td>
+              <td id="bias3"><b>Recommend Data</b>
+
+               <table border="0">
+                  <tr><td><button id="vistype1" onclick="mitigation()">Vistype1</button></td></tr>
+                  <tr><td><button id="vistype1" onclick="mitigationtest()">Vistype1</button></td></tr>
+                  <tr><td><button id="vistype2" onclick="mitigationv()">Vistype2</button></td></tr>
+                  <tr><td><button id="vistype2" onclick="mitigationvtest()">Vistype2</button></td></tr>
+                </table>
+
+              </td>
+        </tr>
       </table>
     </div>
 
-    <div class="col-md-1" id="CHECK">
-      <table border="0">
-      <tr><td><button id="vistype1" onclick="mitigation()">Vistype1</button></td></tr>
-      <tr><td><button id="vistype1" onclick="mitigationtest()">Vistype1</button></td></tr>
-      <tr><td><button id="vistype2" onclick="mitigationv()">Vistype2</button></td></tr>
-      <tr><td><button id="vistype2" onclick="mitigationvtest()">Vistype2</button></td></tr>
-    </table>
-    </div>
-  
-  </div>
-
-  <div class="row" id="area2">
-    <!-- <div id="pcplot" class="chart"></div> -->
-  </div>
-
-  <script src="http://d3js.org/d3.v3.min.js"></script>
+ <script src="http://d3js.org/d3.v3.min.js"></script>
   <script>
+
     for (v=0; v<19; v++) {
-    var width=90;
-    var height=36;
+    var width=80;
+    var height=30;
 
     var svg= d3.select('#bias1')
           .append("svg")
@@ -141,14 +135,17 @@
           .attr("height",height)
    
     var rand = d3.random.normal (50,50)
+    var randstan = d3.random.normal (50,50)
 
     var dataset=[]
+    var datasetstan=[]
 
     for(var i=0; i<50;i++) {
       dataset.push(rand());
+      datasetstan.push(randstan())
     }
 
-    var binNum=10,
+    var binNum=5,
       rangeMin=0,
       rangeMax=100;
 
@@ -158,6 +155,7 @@
             .frequency(true);
 
     var hisData=histogram(dataset);
+    var hisDatastan=histogram(datasetstan);
 
 
     var xAxisWidth=50;
@@ -166,6 +164,7 @@
     var xScale=d3.scale.ordinal()
               .domain(xTicks)
               .rangeRoundBands([0,xAxisWidth],0.1);
+
     var yAxisWidth=20;
 
     var yScale= d3.scale.linear()
@@ -173,7 +172,7 @@
                 d3.max(hisData, function(d){ return d.y; }) ])
             .range([5,yAxisWidth]);
 
-    var padding = { top: 10 , right: 10, bottom: 10, left: 10 };
+    var padding = { top: 1 , right: 1, bottom: 1, left: 1 };
 
     var xAxis = d3.svg.axis()
             .scale(xScale)
@@ -185,6 +184,12 @@
               .x(function(d){ return xScale(d.x); })
               .y(function(d){ return height - yScale(d.y); })
               .interpolate("basis");
+
+    var lineGeneratorstan = d3.svg.line()
+              .x(function(d){ return xScale(d.x); })
+              .y(function(d){ return height - yScale(d.y); })
+              .interpolate("basis");
+
   
     var gLine = svg.append("g")
           .attr("transform","translate(" + padding.left + "," + ( -padding.bottom ) +  ")")
@@ -193,12 +198,70 @@
     gLine.append("path")
     .attr("class","linePath")
     .attr("d",lineGenerator(hisData));
-    }
+
+    gLine.append("path")
+    .attr("class","linePath")
+    .style("stroke","red")
+     .style("opacity","0.6")
+    .attr("d",lineGenerator(hisDatastan));
 
     svg.append("g")
       .attr("class","axis")
       .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
       .call(xAxis);
+
+    var chart = d3.select("#bias2").append("svg")
+         .attr("width", 200)
+         .attr("height", 27)
+
+     var dataset = [0, 1, 2, 3];
+
+     var color=["red","steelblue","skyblue"]
+    var randomToColor = function(){
+      return Math.floor(Math.random()*color.length);
+    }
+
+     var rects = chart.selectAll(".rect")
+         .data(dataset)
+         .enter()
+         .append("rect")
+         .attr('class', 'first')
+         .attr("x", 10)
+         .attr("y", 10)
+         .attr("height", 6)
+         .attr("width", 20)
+         .attr("fill", color[randomToColor()]);
+
+     var rects2 = chart.selectAll(".rect2")
+         .data(dataset)
+         .enter()
+         .append("rect")
+         .attr('class', 'second')
+         .attr("x", 30)
+         .attr("y", 10)
+         .attr("height", 6)
+         .attr("width", 20)
+         .attr("fill", color[randomToColor()]);
+         
+     var rects1 = chart.selectAll(".rect1")
+         .data(dataset)
+         .enter()
+         .append("rect")
+         .attr('class', 'third')
+         .attr("x", 50)
+         .attr("y", 10)
+         .attr("height", 6)
+         .attr("width",20)
+         .attr("fill", color[randomToColor()]);
+    }
+
+    $(document).ready(function(){
+    $("#toggle").click(function(){
+        $("#bias1").fadeToggle();
+        $("#bias2").fadeToggle();
+        $("#bias3").fadeToggle()
+    });
+    });
 
   </script>
   
