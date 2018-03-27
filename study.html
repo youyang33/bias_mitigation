@@ -90,26 +90,27 @@
                  onclick="clearDropzone(&quot;X&quot;)" />
       </div>
       <div style="text-align: center; word-wrap: break-word;">
-      	  <img id="helpButton" src="img/help.png" style="width: 20px; height: 20px; float: left;">
+      	  <img id="helpButton" src="img/help.png" style="width: 20px; height: 20px; float: left; margin-left: 30px">
       </div>
-	      <select id="cbY" name="cbY" onchange="updatebycb(&quot;Y&quot;,value);" style="position: absolute; width: 100px"></select>
+	      <select id="cbY" name="cbY" onchange="updatebycb(&quot;Y&quot;,value);" style="width: 100px"></select>
 	      <select id="cbX" onchange="updatebycb(&quot;X&quot;,value);" style="position: absolute; width: 175px"></select>
     </div>
 
     <div class="col-md-2" id="area3">
-      <div id="datapanel" class="table" width="150"></div>
+      <div id="datapanel" class="table" width="150">
+          <div id="tooltip" class="hidden">
+          
+      </div>
 
    
       </div>
 
     <div class="col-md-2" id="bias">
-      <button id="toggle">Bias Hint</button>
       <table border="0">
         <tr>
-          <td id="bias1"><b>Attribute Distribution</b> </td>
-            <td id="bias2"><b>Attribute Coverage</b></td>
-              <td id="bias3"><b>Recommend Data</b>
-
+          <td id="bias1"></td>              
+              <td id="bias3"><b></b>
+                <!--
                <table border="0">
                   <tr><td><button id="vistype1" onclick="mitigation()">Vistype1</button></td></tr>
                   <tr><td><button id="vistype1" onclick="mitigationtest()">Vistype1</button></td></tr>
@@ -118,18 +119,20 @@
                 </table>
 
               </td>
+            -->
         </tr>
       </table>
     </div>
-
+      
  <script src="http://d3js.org/d3.v3.min.js"></script>
   <script>
 
-    for (v=0; v<19; v++) {
+      /*for (v=0; v<19; v++) {
+
     var width=80;
     var height=30;
 
-    var svg= d3.select('#bias1')
+    var svg= d3.select('#tooltip')
           .append("svg")
           .attr("width",width)        
           .attr("height",height)
@@ -208,16 +211,19 @@
     svg.append("g")
       .attr("class","axis")
       .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
-      .call(xAxis);
+      .call(xAxis); 
 
+ 
+//bias mitigation
     var chart = d3.select("#bias2").append("svg")
-         .attr("width", 200)
-         .attr("height", 27)
+         .attr("width", 20)
+         .attr("height", 50)
 
      var dataset = [0, 1, 2, 3];
 
      var color=["red","steelblue","skyblue"]
-    var randomToColor = function(){
+
+     var randomToColor = function(){
       return Math.floor(Math.random()*color.length);
     }
 
@@ -253,16 +259,7 @@
          .attr("height", 6)
          .attr("width",20)
          .attr("fill", color[randomToColor()]);
-    }
-
-    $(document).ready(function(){
-    $("#toggle").click(function(){
-        $("#bias1").fadeToggle();
-        $("#bias2").fadeToggle();
-        $("#bias3").fadeToggle()
-    });
-    });
-
+ } */
   </script>
   
 </body>

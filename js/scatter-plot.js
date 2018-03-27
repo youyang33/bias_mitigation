@@ -10,6 +10,7 @@ var biasWidthScale = d3.scaleLinear()
 	.range([5, 150]);
 var biasResults = [0, 0, 0, 0, 0, 0];
 
+
 registerKeyboardHandler = function(callback) {
   var callback = callback;
   d3.select(window).on("keydown", callback);  
@@ -846,23 +847,25 @@ function tabulate(dataitem, option) {
     var columns, thead, tbody, data = [];
     
     if (op == 'empty') // construct an empty table
-    	columns = ["Player",""];
+    	columns = ["Data Bias","Player",""];
     else 
-    	columns = [dataitem["Name"],""];
+    	columns = ["Data Bias",dataitem["Name"],""];
     
     var table = d3.select(tid).append("table")
-    	.attr("style", "margin-left: 5px"),
-	thead = table.append("thead"),
-	tbody = table.append("tbody");
-	
+                .attr("style", "margin-left: 5px"),
+
+	   thead = table.append("thead"),
+	   tbody = table.append("tbody");
+
 	// append the header row
-	thead.append("tr")
+	 thead.append("tr")
 		.selectAll("th")
 		.data(columns)
 		.enter()
 		.append("th")
-	    .text(function(column) { return column; });
-	
+	  .text(function(column) { return column;});
+
+
 	columns = ["key", "value"];
 	if (op == 'empty') {
         if (istxtdata==false) {
@@ -873,7 +876,7 @@ function tabulate(dataitem, option) {
             data[i] = item;
           }
         } else {
-          table.style("width", "610px");
+          table.style("width", "810px");
           data[0] = {"key":'{'+dataitem["text"]["title"]+emptyspace+'}', "value":""};
           data[1] = {"key":dataitem["text"]["content"], "value":""};
         }
@@ -886,11 +889,12 @@ function tabulate(dataitem, option) {
 		        data[i] = item;
 		     }
 		 } else {
-		      table.style("width", "610px");
+		      table.style("width", "810px");
 		      data[0] = {"key":'{'+dataitem["text"]["title"]+emptyspace+'}', "value":null};
 		      data[1] = {"key":dataitem["text"]["content"], "value":null};
 		 }
 	}
+
 
     // create a row for each object in the data
     var rows = tbody.selectAll("tr")
@@ -898,18 +902,231 @@ function tabulate(dataitem, option) {
         .enter()
         .append("tr");
 
+    var dataset = [0, 1, 2, 3, 4 ];
+
+    var color=["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#2c7fb8","#253494"]
+    colorarray=[]
+   for (v=0; v<19; v++) {
+    var randomToColor = function(){
+      return Math.floor(Math.random()*color.length);
+    }
+    colorarray.push(color[randomToColor()])
+  }
+    console.log (colorarray)
+
+    var tooltip = d3.select("bias")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .text("a simple tooltip")
+        .attr("class","tooltip");
+
+    var width=100;
+    var height=50;
+
+    var svg= d3.select('#tooltip')
+          .append("svg")
+          .attr("width",width)        
+          .attr("height",height)
+   
+    var rand = d3.random.normal (50,50)
+    var randstan = d3.random.normal (50,50)
+
+    var dataset=[]
+    var datasetstan=[]
+
+    for(var i=0; i<50;i++) {
+      dataset.push(rand());
+      datasetstan.push(randstan())
+    }
+
+    var binNum=5,
+      rangeMin=0,
+      rangeMax=100;
+
+    var histogram=d3.layout.histogram()
+            .range([rangeMin,rangeMax])
+            .bins(binNum)
+            .frequency(true);
+
+    var hisData=histogram(dataset);
+    var hisDatastan=histogram(datasetstan);
+
+
+    var xAxisWidth=50;
+      xTicks=hisData.map(function(d){return d.x});
+
+    var xScale=d3.scale.ordinal()
+              .domain(xTicks)
+              .rangeRoundBands([0,xAxisWidth],0.1);
+
+    var yAxisWidth=20;
+
+    var yScale= d3.scale.linear()
+          .domain([ d3.min(hisData, function(d){ return d.y; }),
+                d3.max(hisData, function(d){ return d.y; }) ])
+            .range([5,yAxisWidth]);
+
+    var padding = { top: 1 , right: 1, bottom: 1, left: 1 };
+
+    var xAxis = d3.svg.axis()
+            .scale(xScale)
+            .orient("bottom")
+            .tickFormat(d3.format(".0f"));
+
+
+    var lineGenerator = d3.svg.line()
+              .x(function(d){ return xScale(d.x); })
+              .y(function(d){ return height - yScale(d.y); })
+              .interpolate("basis");
+
+    var lineGeneratorstan = d3.svg.line()
+              .x(function(d){ return xScale(d.x); })
+              .y(function(d){ return height - yScale(d.y); })
+              .interpolate("basis");
+
+  
+    var gLine = svg.append("g")
+          .attr("transform","translate(" + padding.left + "," + ( -padding.bottom ) +  ")")
+          .style("opacity",1.0);
+  
+    gLine.append("path")
+    .attr("class","linePath")
+    .attr("d",lineGenerator(hisData));
+
+    gLine.append("path")
+    .attr("class","linePath")
+    .style("stroke","red")
+     .style("opacity","0.6")
+    .attr("d",lineGenerator(hisDatastan));
+
+    svg.append("g")
+      .attr("class","axis")
+      .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
+      .call(xAxis); 
+
+
+    var bias = rows.selectAll("td")
+        .data(["100"])
+        .enter()
+        .append("td")
+        .append("svg")
+        .attr("width","100")
+        .attr("height","5")
+        .attr("class", "graph-svg-component")
+        .on("mouseover", function(d) {
+          
+          var xPosition = parseFloat(d3.select(this).attr("x")+ 100);
+          var yPosition = parseFloat(d3.select(this).attr("y"));
+          d3.select("#tooltip")
+            .style("left", xPosition + "px")
+            .style("top", yPosition + "px")
+            .select("#value")
+            .text(d);
+          d3.select("#tooltip").classed("hidden", false);
+
+         })
+        .on("mouseout", function() {
+          d3.select("#tooltip").classed("hidden", true);
+          })
+
+    var rects= bias.selectAll("rects")
+        .data(colorarray)
+        .enter()
+        .append("rect")
+        .attr("x","10")
+        .attr("y","0")
+        .attr("width","10")
+        .attr("height","5")
+        .style("stroke", "blue")
+        .style("stroke-width","1")
+        .attr("class", "first")
+    /*    .on("mouseover", function mitigation(){
+            d3.selectAll("circle")
+              .attr("r", function myFunction() {
+                return  Math.floor(Math.random() * 10) + 1 
+              });   
+            })  */
+            .on("click", function test(){
+             d3.selectAll("circle")
+              .attr("r", function myFunction() {
+                return  Math.floor(Math.random() * 10) + 1 
+              })
+              .style("fill", function(d) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return "green";
+              });       
+        })
+
+    var rects2 = bias.selectAll("rects2")
+         .data(colorarray)
+         .enter()
+         .append("rect")
+         .attr("x", "20")
+         .attr("y", "0")
+         .attr("width", "10")
+         .attr("height", "5")
+         .style("stroke", "black")
+         .style("stroke-width","1")
+         .attr("fill", "yellow")
+         .attr("class", "second")
+       /*  .on("mouseover", function mitigation(){
+            d3.selectAll("circle")
+              .attr("r", function myFunction() {
+                return  Math.floor(Math.random() * 10) + 1 
+              });   
+            }) */
+            .on("click", function test(){
+             d3.selectAll("circle")
+              .attr("r", function myFunction() {
+                return  Math.floor(Math.random() * 10) + 1 
+              })
+              .style("fill", function(d) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return "green";
+              });       
+        });
+         
+     var rects3 = bias.selectAll("rects3")
+         .data(colorarray)
+         .enter()
+         .append("rect")
+         .attr("x", "30")
+         .attr("y", "0")
+         .attr("height", "5")
+         .attr("width","10")
+        .style("stroke", "black")
+        .style("stroke-width","1")
+         .attr("fill", "red")
+         .attr("class", "third")
+          .on("click", function test(){
+             d3.selectAll("circle")
+              .attr("r", function myFunction() {
+                return  Math.floor(Math.random() * 10) + 1 
+              })
+              .style("fill", function(d) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return "green";
+              });       
+        });;
+
     // create a cell in each row for each column
-    var cells = rows.selectAll("td")
+    var cells = rows.selectAll("td.data")
         .data(function(row) {
             return columns.map(function(column) {
-                return {column: column, value: row[column]};
+            return {column: column, value: row[column]};
             });
         })
         .enter()
         .append("td")
-        .html(function(d) { return d.value; });
-    
+        .html(function(d) { return d.value;});
+
     return table;
+
 }
 
 clearDropzone = function(axistobeupdated) {
