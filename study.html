@@ -81,8 +81,7 @@
   </div>
 
   <div class="row" id="area1" style="overflow:hidden;">
-  
-    <div class="col-md-6" id="scplot">
+    <div class="col-md-8" id="scplot">
       <div id="btnXc" style="position: absolute">
           <input name="updateButton" 
                  type="button" 
@@ -90,26 +89,27 @@
                  onclick="clearDropzone(&quot;X&quot;)" />
       </div>
       <div style="text-align: center; word-wrap: break-word;">
-      	  <img id="helpButton" src="img/help.png" style="width: 20px; height: 20px; float: left; margin-left: 30px">
+      	  <img id="helpButton" src="img/help.png" style="width: 20px; height: 20px; float: left; margin-left: 30px; margin-right: 70px;">
       </div>
 	      <select id="cbY" name="cbY" onchange="updatebycb(&quot;Y&quot;,value);" style="width: 100px"></select>
 	      <select id="cbX" onchange="updatebycb(&quot;X&quot;,value);" style="position: absolute; width: 175px"></select>
+
     </div>
 
-    <div class="col-md-2" id="area3">
-      <div id="datapanel" class="table" width="150">
-          <div id="tooltip" class="hidden">
-          
-      </div>
+    <div class="col-md-1" id="area3">
 
-   
-      </div>
+          <div id="biaspanel" class="table" width="10" style="padding-bottom: 50px"></div> 
+          <div id="legend" class="lengend" style=" width:100px; height:30px; float: right;">
+            <rect></rect>
+          </div>
+       
+          </div>       
 
     <div class="col-md-2" id="bias">
-      <table border="0">
-        <tr>
-          <td id="bias1"></td>              
-              <td id="bias3"><b></b>
+          <div id="datapanel" class="table" width="150">
+
+          <div id="tooltip" class="hidden"> </div>
+
                 <!--
                <table border="0">
                   <tr><td><button id="vistype1" onclick="mitigation()">Vistype1</button></td></tr>
@@ -120,115 +120,214 @@
 
               </td>
             -->
-        </tr>
-      </table>
-    </div>
       
  <script src="http://d3js.org/d3.v3.min.js"></script>
   <script>
 
-      /*for (v=0; v<19; v++) {
+    var columns, thead, tbody, data = [];
 
-    var width=80;
-    var height=30;
+    var table = d3.select("#biaspanel").append("table")
+                .attr("style", "margin-left: 5px")
 
-    var svg= d3.select('#tooltip')
-          .append("svg")
-          .attr("width",width)        
-          .attr("height",height)
-   
-    var rand = d3.random.normal (50,50)
-    var randstan = d3.random.normal (50,50)
+     thead = table.append("thead"),
+     tbody = table.append("tbody");
+     titlearray= ["Data Bias"]
 
-    var dataset=[]
-    var datasetstan=[]
-
-    for(var i=0; i<50;i++) {
-      dataset.push(rand());
-      datasetstan.push(randstan())
-    }
-
-    var binNum=5,
-      rangeMin=0,
-      rangeMax=100;
-
-    var histogram=d3.layout.histogram()
-            .range([rangeMin,rangeMax])
-            .bins(binNum)
-            .frequency(true);
-
-    var hisData=histogram(dataset);
-    var hisDatastan=histogram(datasetstan);
+    thead.append("tr")
+      .selectAll("th")
+      .data(titlearray)
+      .enter()
+      .append("th")
+      .text(function(titlearray) { return titlearray;});
 
 
-    var xAxisWidth=50;
-      xTicks=hisData.map(function(d){return d.x});
 
-    var xScale=d3.scale.ordinal()
-              .domain(xTicks)
-              .rangeRoundBands([0,xAxisWidth],0.1);
-
-    var yAxisWidth=20;
-
-    var yScale= d3.scale.linear()
-          .domain([ d3.min(hisData, function(d){ return d.y; }),
-                d3.max(hisData, function(d){ return d.y; }) ])
-            .range([5,yAxisWidth]);
-
-    var padding = { top: 1 , right: 1, bottom: 1, left: 1 };
-
-    var xAxis = d3.svg.axis()
-            .scale(xScale)
-            .orient("bottom")
-            .tickFormat(d3.format(".0f"));
-
-
-    var lineGenerator = d3.svg.line()
-              .x(function(d){ return xScale(d.x); })
-              .y(function(d){ return height - yScale(d.y); })
-              .interpolate("basis");
-
-    var lineGeneratorstan = d3.svg.line()
-              .x(function(d){ return xScale(d.x); })
-              .y(function(d){ return height - yScale(d.y); })
-              .interpolate("basis");
-
-  
-    var gLine = svg.append("g")
-          .attr("transform","translate(" + padding.left + "," + ( -padding.bottom ) +  ")")
-          .style("opacity",1.0);
-  
-    gLine.append("path")
-    .attr("class","linePath")
-    .attr("d",lineGenerator(hisData));
-
-    gLine.append("path")
-    .attr("class","linePath")
-    .style("stroke","red")
-     .style("opacity","0.6")
-    .attr("d",lineGenerator(hisDatastan));
-
-    svg.append("g")
-      .attr("class","axis")
-      .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
-      .call(xAxis); 
+     var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr");
 
  
+        var width=80;
+        var height=30;
+
+        var svg= d3.select('#tooltip')
+              .append("svg")
+              .attr("width",width)        
+              .attr("height",height)
+       
+        var rand = d3.random.normal (50,50)
+        var randstan = d3.random.normal (50,50)
+
+        var dataset=[]
+        var datasetstan=[]
+
+        for(var i=0; i<50;i++) {
+          dataset.push(rand());
+          datasetstan.push(randstan())
+        }
+
+        var binNum=5,
+          rangeMin=0,
+          rangeMax=100;
+
+        var histogram=d3.layout.histogram()
+                .range([rangeMin,rangeMax])
+                .bins(binNum)
+                .frequency(true);
+
+        var hisData=histogram(dataset);
+        var hisDatastan=histogram(datasetstan);
+
+        var xAxisWidth=50;
+          xTicks=hisData.map(function(d){return d.x});
+
+        var xScale=d3.scale.ordinal()
+                  .domain(xTicks)
+                  .rangeRoundBands([0,xAxisWidth],0.1);
+
+        var yAxisWidth=20;
+
+        var yScale= d3.scale.linear()
+              .domain([ d3.min(hisData, function(d){ return d.y; }),
+                    d3.max(hisData, function(d){ return d.y; }) ])
+                .range([5,yAxisWidth]);
+
+        var padding = { top: 1 , right: 1, bottom: 1, left: 1 };
+
+        var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .orient("bottom")
+                .tickFormat(d3.format(".0f"));
+
+
+        var lineGenerator = d3.svg.line()
+                  .x(function(d){ return xScale(d.x); })
+                  .y(function(d){ return height - yScale(d.y); })
+                  .interpolate("basis");
+
+        var lineGeneratorstan = d3.svg.line()
+                  .x(function(d){ return xScale(d.x); })
+                  .y(function(d){ return height - yScale(d.y); })
+                  .interpolate("basis");
+
+      
+        var gLine = svg.append("g")
+              .attr("transform","translate(" + padding.left + "," + ( -padding.bottom ) +  ")")
+              .style("opacity",1.0);
+      
+        gLine.append("path")
+        .attr("class","linePath")
+        .attr("d",lineGenerator(hisData));
+
+        gLine.append("path")
+        .attr("class","linePath")
+        .style("stroke","red")
+         .style("opacity","0.6")
+        .attr("d",lineGenerator(hisDatastan));
+
+        svg.append("g")
+          .attr("class","axis")
+          .attr("transform","translate("+padding.left+","+(height-padding.bottom)+")")
+          .call(xAxis);  
+
 //bias mitigation
-    var chart = d3.select("#bias2").append("svg")
-         .attr("width", 20)
-         .attr("height", 50)
+        var color=["red","green","yellow"]
+     
+        var arraycolor=[]
+
+    for (v=0; v<19; v++) {
+
+       var m= Math.floor(Math.random()*3)
+
+       var chart = d3.select("#biaspanel").append("svg")
+         .attr("width", 100)
+         .attr("height", 17.76)
+
+         .on("mouseover", function(d) {
+
+        var xPosition = parseFloat(d3.select(this).attr("x"));
+          var yPosition = parseFloat(d3.select(this).attr("y"));
+
+          d3.select("#tooltip")
+            .style("left", xPosition + "px")
+            .style("top", yPosition + "px")
+            .select("#value")
+            .text(d);
+
+          d3.select("#tooltip").classed("hidden", false);
+
+          d3.selectAll("circle")
+              .style("fill", function(d) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.35)
+                return color[Math.floor(Math.random()*3)];
+              });    
+
+         }) 
+        .on("mouseout", function() {
+          d3.select("#tooltip").classed("hidden", true);
+
+
+          })
 
      var dataset = [0, 1, 2, 3];
 
-     var color=["red","steelblue","skyblue"]
+     var m= Math.floor(Math.random()*3)
 
-     var randomToColor = function(){
-      return Math.floor(Math.random()*color.length);
-    }
+     arraycolor.push(color[m])
+     console.log(arraycolor)
 
-     var rects = chart.selectAll(".rect")
-         .data(dataset)
+     var rectt = chart.selectAll(".rectt")
+         .data(dataset) 
+         .enter()
+         .append("rect")
+         .attr('class', 'first')
+         .attr("x", 8)
+         .attr("y", 9)
+         .attr("height", 20)
+         .attr("width", 100)
+         .style("stroke", "black")
+         .style("stroke-width","0")
+         .attr("fill","#E0E1E1")
+         .attr("opacity","1.0")
+         .on("mouseover",function hovereffect(){
+          
+          d3.selectAll("circle")
+              .style("fill", function(d) {
+                biasTemp = Math.random();
+                if (biasTemp < 0.35)
+                return color[Math.floor(Math.random()*3)];
+              });  
+
+          d3.select(this)
+            .style("stroke-width","0")
+            .attr("height", 6)
+            .attr("width", 100)
+            .attr("x", 10)
+            .attr("y", 10)
+            .attr("fill","black")
+            .style("stroke-width","2")
+            .attr("opacity","0.1")
+
+            })
+
+         .on("mouseout",function hovereffect(){
+           d3.select(this)
+             .attr("x", 8)
+             .attr("y", 9)
+             .attr("height", 20)
+             .attr("width", 90)
+             .style("stroke", "black")
+             .style("stroke-width","0")
+             .attr("fill","#E0E1E1")
+             .attr("opacity","1.0")
+
+          })
+;
+
+      var rects = chart.selectAll(".rects")
+         .data(dataset) 
          .enter()
          .append("rect")
          .attr('class', 'first')
@@ -236,8 +335,31 @@
          .attr("y", 10)
          .attr("height", 6)
          .attr("width", 20)
-         .attr("fill", color[randomToColor()]);
+         .style("stroke", "black")
+         .style("stroke-width","1")
+         .attr("fill",color[m])
+         .on("mouseover",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","2")
+         })
+        .on("mouseout",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","1")
+         })
+         .on("click", function mitigation(d,i){
 
+          var color= d3.select(this).style('fill')
+              console.log(color)
+
+           d3.selectAll("circle")
+              .style("fill", function(d,i) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return color;
+              });       
+            })
+
+     var m= Math.floor(Math.random()*3)
      var rects2 = chart.selectAll(".rect2")
          .data(dataset)
          .enter()
@@ -247,19 +369,64 @@
          .attr("y", 10)
          .attr("height", 6)
          .attr("width", 20)
-         .attr("fill", color[randomToColor()]);
-         
+          .style("stroke", "black")
+         .style("stroke-width","1")
+         .attr("fill", color[m])
+         .on("mouseover",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","2")
+         })
+        .on("mouseout",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","1")
+         })
+         .on("click", function mitigation(d,i){ 
+           var color= d3.select(this).style('fill')
+              console.log(color)
+
+           d3.selectAll("circle")
+              .style("fill", function(d,i) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return color;
+              });       
+            })
+;
+    
+     var m= Math.floor(Math.random()*3)
      var rects1 = chart.selectAll(".rect1")
          .data(dataset)
          .enter()
          .append("rect")
          .attr('class', 'third')
+         .attr("id", function(d, i) { return "rect1-" + i; })
          .attr("x", 50)
          .attr("y", 10)
          .attr("height", 6)
          .attr("width",20)
-         .attr("fill", color[randomToColor()]);
- } */
+         .style("stroke", "black")
+         .style("stroke-width","1")
+         .attr("fill", color[m])
+         .on("mouseover",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","2")
+         })
+        .on("mouseout",function hovereffect(){
+            d3.select(this)
+            .style("stroke-width","1")
+         })
+         .on("click", function mitigation(d,i){ 
+           var color= d3.select(this).style('fill')
+              console.log(color)
+
+              d3.selectAll("circle")
+              .style("fill", function(d,i) {
+              biasTemp = Math.random();
+                if (biasTemp < 0.05)
+                return color;
+              });       
+            })
+ } 
   </script>
   
 </body>

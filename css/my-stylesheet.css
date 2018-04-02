@@ -131,6 +131,13 @@ table {
   width: 400px;
 }
 
+#biastable {
+  font: 10px sans-serif;
+  border-collapse:collapse; 
+  table-layout:fixed; 
+  width: 30px;
+}
+
 /*ul {
   list-style-type: none;
   margin: 0.5em 0em 0.5em 0em;
@@ -275,7 +282,16 @@ circle:click {
 
 #datapanel{
   padding-top: 40px;
-  height: 300px;
+  height: 200px;
+  margin-left: 10px;
+}
+
+#biaspanel{
+  padding-top: 40px;
+  height: 390px;
+  margin-left: 5px;
+  width:100px;
+  padding-bottom: 50px;
 }
 
 .axis path,
@@ -308,14 +324,13 @@ circle:click {
   padding-top: 5px;
 }
 
-
 #CHECK{
   padding-top: 80px;
   height:20px;
 }
 
 #bias{
-    width:330px;
+  width:330px;
 }
 
 .first{
@@ -327,7 +342,7 @@ circle:click {
   position: absolute;
   width: 100px;
   height: 100px;
-  padding: 10px;
+  padding: 5px;
   opacity: 0.6;
   background-color: white;
   -webkit-border-radius: 10px;
@@ -348,4 +363,8 @@ circle:click {
   font-family: Futura;
   font-size: 16px;
   line-height: 20px;
+}
+
+.area3{
+  width:100px;
 }
