@@ -847,9 +847,9 @@ function tabulate(dataitem, option) {
     var columns, thead, tbody, data = [];
     
     if (op == 'empty') // construct an empty table
-    	columns = ["Data Bias","Player",""];
+    	columns = ["Player",""];
     else 
-    	columns = ["Data Bias",dataitem["Name"],""];
+    	columns = [dataitem["Name"],""];
     
     var table = d3.select(tid).append("table")
                 .attr("style", "margin-left: 5px"),
